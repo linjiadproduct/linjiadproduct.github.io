@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>01数据指标</title>
+    <url>/2020/08/18/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/01%E6%95%B0%E6%8D%AE%E6%8C%87%E6%A0%87/</url>
+    <content><![CDATA[<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>对当前业务具有参考价值的统计数据</p>
+<ul>
+<li>当前业务有价值<ul>
+<li>不是所有的数据都叫指标</li>
+<li>与当前业务无关的意义也不大</li>
+</ul>
+</li>
+<li>统计数据<ul>
+<li>数据不是凭空产生的</li>
+<li>不能脱离现实</li>
+</ul>
+</li>
+</ul>
+<p><img src="./01.png" alt="定义"></p>
+<h3 id="常用的数据指标"><a href="#常用的数据指标" class="headerlink" title="常用的数据指标"></a>常用的数据指标</h3><ul>
+<li>用户数据——谁<ul>
+<li>存量——DAU/MAU</li>
+<li>增量——新增用户</li>
+<li>健康程度——留存率</li>
+<li>从哪来——渠道来源</li>
+</ul>
+</li>
+<li>行为数据——干了什么<ul>
+<li>次数/频率——PV,UV,访问深度</li>
+<li>路径走通程度——转化率</li>
+<li>做了多久——时长</li>
+<li>质量——弹出率</li>
+</ul>
+</li>
+<li>业务数据——结果怎样<ul>
+<li>总量——GMV——访问时长</li>
+<li>人均——ARPU/ARPPU——人均访问时长</li>
+<li>人数——付费人数——播放人数</li>
+<li>健康程度——付费率，付费频次——观看率</li>
+<li>被消费对象——SKU视角——被消费内容视角</li>
+</ul>
+</li>
+</ul>
+<p><img src="./02.png" alt="常用的数据指标"></p>
+<h2 id="用户数据"><a href="#用户数据" class="headerlink" title="用户数据"></a>用户数据</h2><h3 id="日活-月活"><a href="#日活-月活" class="headerlink" title="日活/月活"></a>日活/月活</h3><p>Daily/Monthly Active User</p>
+<h4 id="日活"><a href="#日活" class="headerlink" title="日活"></a>日活</h4><p>Daily Active User</p>
+<ul>
+<li>Daily 一自然日<ul>
+<li>注意：如果是跨时区的产品，则关心最近的24小时</li>
+</ul>
+</li>
+</ul>
+<p><img src="./03.png" alt="常用的数据指标"></p>
+<h4 id="月活"><a href="#月活" class="headerlink" title="月活"></a>月活</h4><p>Monthly Active User</p>
+<ul>
+<li>上图中月活 = 10</li>
+<li>MAU &lt;= 最大日活 + 新增用户 &lt;= 总用户量</li>
+<li>单纯将日活累加而不去重，是没有任何参考价值的</li>
+<li>MAU != 当月各个日DAU之和，务必去重才有观察的意义</li>
+</ul>
+<h4 id="活跃"><a href="#活跃" class="headerlink" title="活跃"></a>活跃</h4><h5 id="数据统计系统的定义"><a href="#数据统计系统的定义" class="headerlink" title="数据统计系统的定义"></a>数据统计系统的定义</h5><ul>
+<li><p>基于事件上报：有事件上报==&gt;该用户活跃</p>
+<ul>
+<li><p>预制报表系统（友盟，百度统计，GA，….）都是基于事件上报进行统计的</p>
+</li>
+<li><p>上报事件会有坑（因为是假定了事件上报一定来自用户主动操作，如果下面案例就会出错）</p>
+<p><img src="./04.png" alt="活跃用户"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h5><p>产品经理：我要统计我们发下去的PUSH，我得知道到底有多少条PUSH是到达了用户的设备上的。不然推送转化根本无法优化。<br>程序员：这个简单，可以做。我在后台写一个Service，APP收到PUSH的时候就给友盟上报一个事件说收到了。</p>
+<p>结果</p>
+<p><img src="./05.png" alt="活跃用户"></p>
+<h4 id="业务上的定义"><a href="#业务上的定义" class="headerlink" title="业务上的定义"></a>业务上的定义</h4><ul>
+<li>基于关键时间上报：用户执行了关键时间==&gt;用户活跃<ul>
+<li>存在运维成本：需要不断维护日活事件列表</li>
+<li>存在沟通成本：团队内外对“活跃”的认识需要统一</li>
+</ul>
+</li>
+</ul>
+<p><img src="./06.png" alt="业务上的定义"></p>
+<h4 id="用户"><a href="#用户" class="headerlink" title="用户"></a>用户</h4><p>到底是通过用户人来统计还是通过访问的机器数量来统计？</p>
+<p><img src="./07.png" alt="用户"></p>
+<h5 id="认人"><a href="#认人" class="headerlink" title="认人"></a>认人</h5><ul>
+<li>给每位注册用户一个唯一的专属ID</li>
+<li>只适用于注册/登录环境，未登录的用户会被漏掉</li>
+</ul>
+<p><img src="./08.png" alt="认人"></p>
+<h5 id="认设备"><a href="#认设备" class="headerlink" title="认设备"></a>认设备</h5><ul>
+<li>在网页cookie中埋下一段长随机字符串，作为设备唯一标识符</li>
+<li>无法对应设备背后的用户</li>
+</ul>
+<p><img src="./09.png" alt="认设备"></p>
+<h3 id="新增用户"><a href="#新增用户" class="headerlink" title="新增用户"></a>新增用户</h3><p>不同角色对新增用户的理解各不相同·</p>
+<ul>
+<li>渠道商：只要点了你们的产品的下载按钮就算一次新增了！</li>
+<li>运营：总得下载成功了才算吧！而且一个用户一天最多就算一次</li>
+<li>产品：我们按启动量算吧。没打开APP也是则数据质量太差了</li>
+<li>开发：注册了才叫新增用户，否则后台压根没这条数据</li>
+</ul>
+<p>每个人都在提新增，但是每个人嘴里讲的新增其实都不一样</p>
+<h4 id="选择合适的节点"><a href="#选择合适的节点" class="headerlink" title="选择合适的节点"></a>选择合适的节点</h4><p>选择合适的节点定义新</p>
+<p><img src="./10.png" alt="选择合适的节点"></p>
+<table>
+<thead>
+<tr>
+<th>比对</th>
+<th align="left">点击渠道链接</th>
+<th align="center">下载</th>
+<th align="right">安装,启动</th>
+<th align="right">激活</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>优势</td>
+<td align="left">统计简单</td>
+<td align="center">真实反映了用户的实际意愿</td>
+<td align="right">离激活最近，便于统计</td>
+<td align="right">最真实的数据</td>
+</tr>
+<tr>
+<td>劣势</td>
+<td align="left">离激活环节最远，转化率太差</td>
+<td align="center">数据源可信度存疑，无法避免刷量</td>
+<td align="right">渠道不一定配合，仍然无法避免刷量</td>
+<td align="right">渠道费用激增，统计复杂</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td align="left">量级不大,免费渠道不需要做精细结算</td>
+<td align="center">渠道依赖应用商店且没有更好的渠道</td>
+<td align="right">自己较强势，可给渠道制定统计规则</td>
+<td align="right">对用户质量要求高且产品ARPU高</td>
+</tr>
+</tbody></table>
+<h4 id="用适当的方法辨别新"><a href="#用适当的方法辨别新" class="headerlink" title="用适当的方法辨别新"></a>用适当的方法辨别新</h4><ul>
+<li>基于设备：通过不同平台的表示判断这个设备是否是第一次登陆</li>
+<li>基于账号：通过对比用户是否存在而区分是否是新用户</li>
+</ul>
+<h3 id="留存率"><a href="#留存率" class="headerlink" title="留存率"></a>留存率</h3><p>之前的例子为例</p>
+<p><img src="./11.png" alt="留存率"></p>
+<h4 id="算法一"><a href="#算法一" class="headerlink" title="算法一"></a>算法一</h4><p><img src="./12.png" alt="算法一"></p>
+<h4 id="算法二"><a href="#算法二" class="headerlink" title="算法二"></a>算法二</h4><p><img src="./13.png" alt="算法二"></p>
+<h4 id="案例对比渠道质量"><a href="#案例对比渠道质量" class="headerlink" title="案例对比渠道质量"></a>案例对比渠道质量</h4><p>当我们对比渠道质量的时候，可以使用第一种算法进行计算</p>
+<p><img src="./14.png" alt="对比渠道质量"></p>
+<p><img src="./16.png" alt="对比渠道质量2"></p>
+<h4 id="案例用户访问集中时"><a href="#案例用户访问集中时" class="headerlink" title="案例用户访问集中时"></a>案例用户访问集中时</h4><p>当用户访问特别集中，只看Day7来评价，往往不能反映真实情况，此时关注7日内活跃情况更能描述渠道质量</p>
+<p><img src="./17.png" alt="案例用户访问集中时"></p>
+<h4 id="算法三"><a href="#算法三" class="headerlink" title="算法三"></a>算法三</h4><p>有些7日留存计算是一共需要计算8天，从第0天开始计算</p>
+<p><img src="./18.png" alt="时间"></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><img src="./19.png" alt="总结"></p>
+<ul>
+<li>日留存<ul>
+<li>了解某一渠道的质量</li>
+<li>以天为单位，衡量这个渠道来的用户当下/接下来的表现</li>
+<li>以【X日日留存】作为比较标准时，可以避免其他日数据的干扰</li>
+</ul>
+</li>
+<li>周/月留存<ul>
+<li>以周/月为单位，衡量产品的健康情况，观察用户在平台上的粘性</li>
+<li>务必去重</li>
+</ul>
+</li>
+</ul>
+<p><img src="./20.png" alt="总结2"></p>
+<h2 id="行为相关数据指标"><a href="#行为相关数据指标" class="headerlink" title="行为相关数据指标"></a>行为相关数据指标</h2><h3 id="案例-1"><a href="#案例-1" class="headerlink" title="案例"></a>案例</h3><ul>
+<li>5个用户来到网站，总共访问了13次首页</li>
+<li>13次首页访问中，有8次都会点开课程详情</li>
+<li>最后有2个用户注册了会员</li>
+<li>这2个人中后续有1个用户购买了课程</li>
+</ul>
+<p><img src="./21.png" alt="总结2"></p>
+<ul>
+<li>来了多少用户？访问情况如何？<ul>
+<li>来了5个。访问13次，人均2.6次</li>
+</ul>
+</li>
+<li>首页转化效果如何？<ul>
+<li>有8/13=62%的人进入课程详情页</li>
+</ul>
+</li>
+<li>有多少注册了的？<ul>
+<li>今天来了5个人里有2个注册的，占40%</li>
+</ul>
+</li>
+<li>注册的有多少付费的？<ul>
+<li>这2人中有1个付费的，占50%</li>
+</ul>
+</li>
+</ul>
+<h3 id="PV和UV"><a href="#PV和UV" class="headerlink" title="PV和UV"></a>PV和UV</h3><ul>
+<li>Page Views——页面浏览量——次数</li>
+<li>Unique Visitors——独立访问数——人数</li>
+</ul>
+<h3 id="转化率"><a href="#转化率" class="headerlink" title="转化率"></a>转化率</h3><h4 id="PV-PV和UV-UV"><a href="#PV-PV和UV-UV" class="headerlink" title="PV/PV和UV/UV"></a>PV/PV和UV/UV</h4><ul>
+<li>详情页的评论转化率 = 评论发表PV/详情页PV</li>
+<li>用户的评论转化率 = 评论发表UV/详情页UV</li>
+</ul>
+<h4 id="PV-UV"><a href="#PV-UV" class="headerlink" title="PV/UV"></a>PV/UV</h4><ul>
+<li>人均行为次数</li>
+<li>人均查看数 = 详情页PV/详情页UV</li>
+<li>人均评论次数 = 评论发表PV/评论发表UV</li>
+</ul>
+<h3 id="访问深度"><a href="#访问深度" class="headerlink" title="访问深度"></a>访问深度</h3><ul>
+<li>用户对产品的了解程度</li>
+<li>算法一：用户对某些关键行为的访问次数</li>
+<li>算法二：将网站内容/功能分成几个层级，以用户本次访问过最深的一级计算</li>
+</ul>
+<h3 id="访问时长"><a href="#访问时长" class="headerlink" title="访问时长"></a>访问时长</h3><ul>
+<li>web时代<ul>
+<li>页面打开时长</li>
+<li>但是如果一直没关，或是上个洗手间</li>
+</ul>
+</li>
+<li>APP时代<ul>
+<li>前台驻留时长</li>
+<li>如果手机放在桌子上没动</li>
+</ul>
+</li>
+<li>物联网<ul>
+<li>摄像头观察瞳孔是否注视屏幕</li>
+<li>需要设备的隐私授权</li>
+</ul>
+</li>
+</ul>
+<h3 id="弹出率"><a href="#弹出率" class="headerlink" title="弹出率"></a>弹出率</h3><ul>
+<li>A页面弹出率<ul>
+<li>1/3 = 33.3%</li>
+</ul>
+</li>
+<li>B页面弹出率<ul>
+<li>2/4 = 50%</li>
+</ul>
+</li>
+<li>C页面弹出率<ul>
+<li>3/3 = 100%</li>
+</ul>
+</li>
+</ul>
+<p><img src="./22.png" alt="弹出率"></p>
+<h2 id="业务相关数据指标"><a href="#业务相关数据指标" class="headerlink" title="业务相关数据指标"></a>业务相关数据指标</h2><h3 id="案例-2"><a href="#案例-2" class="headerlink" title="案例"></a>案例</h3><ul>
+<li>一共卖了多少钱？</li>
+<li>消费水平怎么样？</li>
+<li>来了多少人？</li>
+<li>有多少人买东西了？有都少人是老顾客？</li>
+<li>我们的商品好不好卖？</li>
+</ul>
+<h3 id="常用业务指标"><a href="#常用业务指标" class="headerlink" title="常用业务指标"></a>常用业务指标</h3><table>
+<thead>
+<tr>
+<th>直接付费</th>
+<th align="left">适用场景</th>
+<th align="center">解决什么问题</th>
+<th align="right">非直接付费</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GMV(成交总额)</td>
+<td align="left">总量</td>
+<td align="center">描述交易的金额总规模</td>
+<td align="right">目标完成数（报名，点击，分享…）</td>
+</tr>
+<tr>
+<td>ARPU/ARPPU(平均消费)</td>
+<td align="left">人均</td>
+<td align="center">单个用户的共享程度</td>
+<td align="right">人均访问时长</td>
+</tr>
+<tr>
+<td>付费人数</td>
+<td align="left">人数</td>
+<td align="center">描述原以为服务付费的人数总规模</td>
+<td align="right">完成人数</td>
+</tr>
+<tr>
+<td>付费率/付费频次</td>
+<td align="left">健康程度</td>
+<td align="center">描述总体上的用户付费意愿评判一个服务的健康程度</td>
+<td align="right">完成率</td>
+</tr>
+<tr>
+<td>SKU视角(商品视角)</td>
+<td align="left">被消费对象</td>
+<td align="center">需要分析消费品本身的运营情况</td>
+<td align="right">被消费内容视角</td>
+</tr>
+</tbody></table>
+<h2 id="选好数据指标通用方法"><a href="#选好数据指标通用方法" class="headerlink" title="选好数据指标通用方法"></a>选好数据指标通用方法</h2><ul>
+<li>从业务的最终目的出发梳理业务模块</li>
+<li>判断业务模块所属类型</li>
+<li>根据业务模块所属类型选择数据指标</li>
+</ul>
+<p><img src="./23.png" alt="选好数据指标通用方法"></p>
+<h3 id="梳理业务模块"><a href="#梳理业务模块" class="headerlink" title="梳理业务模块"></a>梳理业务模块</h3><h4 id="案例1"><a href="#案例1" class="headerlink" title="案例1"></a>案例1</h4><ul>
+<li>我要卖货</li>
+</ul>
+<p><img src="./24.png" alt="我要卖货"></p>
+<ul>
+<li>我要通过文章来卖货</li>
+</ul>
+<p><img src="./25.png" alt="我要卖货2"></p>
+<p>我要通过社区创作的文章来卖货</p>
+<p><img src="./26.png" alt="我要卖货3"></p>
+<p>我要通过社区创作的优美的文章来卖货</p>
+<p><img src="./27.png" alt="我要卖货4"></p>
+<p>我们可以吧目的和手段进行拆分</p>
+<p><img src="./28.png" alt="拆分"></p>
+<p>再来分析刚才的例子</p>
+<p><img src="./29.png" alt="我要卖货5"></p>
+]]></content>
+      <categories>
+        <category>数据分析</category>
+      </categories>
+      <tags>
+        <tag>数据分析</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>0导论</title>
+    <url>/2020/08/17/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/0%E5%AF%BC%E8%AE%BA/</url>
+    <content><![CDATA[<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>某商店下个月希望销售额提高20%</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><ul>
+<li>首先分析销售额是如何而来的<blockquote>
+<p>CMV = 客单价 * 付费人数</p>
+</blockquote>
+</li>
+</ul>
+<p><img src="./01.png" alt="分析"></p>
+<ul>
+<li>为了提升销售额，可以提高客单价或付费人数，如果提高客单价势必会造成付费人数减少，所以我们从付费人数下手</li>
+<li>分析付费人数是如何来的？是通过路过人数转化成进店人数再转化成付费人数而来<blockquote>
+<p>路过人数 ==&gt; 进店人数  ==&gt;  付费人数</p>
+</blockquote>
+</li>
+</ul>
+<p><img src="./02.png" alt="分析2"></p>
+<p>如果我们想进行下一步分析，需要这些？？？的数据，于是我们开始统计数据</p>
+<h3 id="原始记录"><a href="#原始记录" class="headerlink" title="原始记录"></a>原始记录</h3><ul>
+<li>拿个小本画正字，分别记录路过的人，进店人数，付费人数</li>
+<li>没3h进行一次计算机数据录入</li>
+<li>一天结束后通过计算器来计算数据<ul>
+<li>进店率 = 进店人数/路过人数 * 100% </li>
+<li>付费率 = 付费人数/进店人数 * 100% </li>
+<li>如果是几个人进店才购买1单商品的话我们的统计会有问题，所以我们需要改进付费率指标</li>
+<li>成单率 = 付费单数/进店人数 * 100%                                                                                                                                                                          </li>
+</ul>
+</li>
+</ul>
+<h3 id="改进方法"><a href="#改进方法" class="headerlink" title="改进方法"></a>改进方法</h3><ul>
+<li>拿两个计数器，分别记录路过人数，进店人数</li>
+<li>没3h进行一次计算机数据录入</li>
+<li>填入Excle，自动分时段计算<ul>
+<li>进店率 = 进店人数/路过人数 * 100% </li>
+<li>成单率 = 付费单数/进店人数 * 100%     </li>
+</ul>
+</li>
+</ul>
+<h3 id="得出数据"><a href="#得出数据" class="headerlink" title="得出数据"></a>得出数据</h3><p><img src="./03.png" alt="得出数据1"><br><img src="./04.png" alt="得出数据2"></p>
+<ul>
+<li>由此看来我们可以提升路过人数到进店人数的进店率</li>
+<li>进店率提升后付费单数自然就提升了</li>
+<li>付费单数提升后销售额自然就提升</li>
+</ul>
+<h3 id="分析数据"><a href="#分析数据" class="headerlink" title="分析数据"></a>分析数据</h3><ul>
+<li>为了吸引客户我们可以把商品降价</li>
+<li>如果降价80%需要提高付费单数125%才能保证不亏损</li>
+<li>如果降价80%提高付费单数150%则能保证120%的销售额</li>
+</ul>
+<p><img src="./05.png" alt="分析数据"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>我们的行为过程包含了以下几个方面</p>
+<ul>
+<li>数据采集</li>
+<li>指标建模</li>
+<li>观测数据</li>
+<li>数据分析</li>
+<li>业务洞察</li>
+</ul>
+<h2 id="数据的对比"><a href="#数据的对比" class="headerlink" title="数据的对比"></a>数据的对比</h2><h3 id="新上线产品"><a href="#新上线产品" class="headerlink" title="新上线产品"></a>新上线产品</h3><p>老板询问一款刚上线不久的社区产品的表现情况</p>
+<ul>
+<li>A产品经理<ul>
+<li>很不错！日活每天都再涨，新增也很多</li>
+</ul>
+</li>
+<li>B产品经理<ul>
+<li>日活按设备数看一直在上涨</li>
+<li>但是按注册用户数看并不乐观</li>
+<li>新增用户转化成注册用户只有20%</li>
+<li>说明我们社区现在还没有促使用户注册的动机</li>
+</ul>
+</li>
+</ul>
+<h3 id="三个月后产品是否适合推广"><a href="#三个月后产品是否适合推广" class="headerlink" title="三个月后产品是否适合推广"></a>三个月后产品是否适合推广</h3><p>三个月后老板想知道产品是否适合推广</p>
+<ul>
+<li>A产品经理<ul>
+<li>最近日活平平，已经没有刚开始那么多新增用户了，要不要推广拿不准</li>
+</ul>
+</li>
+<li>B产品经理<ul>
+<li>近日日活虽然上涨趋势不大</li>
+<li>但用户人均发帖量相比上线时翻了一番</li>
+<li>用户间的好友密度也比一个月前增长了30%，我觉得社区的氛已经形成</li>
+<li>这个从新用户次日留存由上个月的35%涨到50%也得到认证</li>
+<li>因此局的可以开始大规模推广</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>数据分析</category>
+      </categories>
+      <tags>
+        <tag>数据分析</tag>
+      </tags>
+  </entry>
+</search>
